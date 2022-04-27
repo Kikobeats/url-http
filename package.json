@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kikobeats/url-http.git"
+    "url": "git+https://github.com/Kikobeats/url-http.git"
   },
   "bugs": {
-    "url": "https://github.com/kikobeats/url-http/issues"
+    "url": "https://github.com/Kikobeats/url-http/issues"
   },
   "keywords": [
     "http",
