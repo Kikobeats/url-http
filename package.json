@@ -1,7 +1,7 @@
 {
   "name": "url-http",
   "description": "Get input as normalized WHATWG URL",
-  "homepage": "https://nicedoc.io/someone/url-http",
+  "homepage": "https://nicedoc.io/kikobeats/url-http",
   "version": "1.0.0",
   "browser": "src/lightweight.js",
   "main": "src/index.js",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/someone/url-http.git"
+    "url": "git+https://github.com/kikobeats/url-http.git"
   },
   "bugs": {
-    "url": "https://github.com/someone/url-http/issues"
+    "url": "https://github.com/kikobeats/url-http/issues"
   },
   "keywords": [
     "http",
