@@ -2,7 +2,7 @@
   "name": "url-http",
   "description": "Get input as normalized WHATWG URL",
   "homepage": "https://nicedoc.io/kikobeats/url-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "browser": "src/lightweight.js",
   "main": "src/index.js",
   "author": {
