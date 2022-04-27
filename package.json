@@ -2,7 +2,7 @@
   "name": "url-http",
   "description": "Get input as normalized WHATWG URL",
   "homepage": "https://nicedoc.io/someone/url-http",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "browser": "src/lightweight.js",
   "main": "src/index.js",
   "author": {
