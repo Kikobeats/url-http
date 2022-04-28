@@ -1,3 +1,3 @@
-declare module 'is-url-http' {
+declare module 'url-http' {
   export default function isUrlHttp(url: string): string | false;
 }

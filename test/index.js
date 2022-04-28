@@ -3,8 +3,8 @@
 const test = require('ava')
 
 ;[
-  { fn: require('url-http') },
-  { fn: require('url-http/lightweight'), isLightweight: true }
+  { fn: require('..') },
+  { fn: require('../lightweight'), isLightweight: true }
 ].forEach(({ fn: httpUrl, isLightweight }) => {
   test(isLightweight ? 'lightweight » true' : 'true', t => {
     t.true(!!httpUrl('http://kikobeats.com'))
