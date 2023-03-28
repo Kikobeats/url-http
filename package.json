@@ -10,6 +10,12 @@
     "name": "Kiko Beats",
     "url": "https://kikobeats.com"
   },
+  "contributors": [
+    {
+      "name": "Gal Schlezinger",
+      "email": "gal@spitfire.co.il"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kikobeats/url-http.git"
