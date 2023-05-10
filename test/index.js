@@ -8,6 +8,10 @@ const test = require('ava')
 ].forEach(({ fn: httpUrl, isLightweight }) => {
   test(isLightweight ? 'lightweight » true' : 'true', t => {
     ;[
+      'http://169.254.169.254:1337/',
+      'http://[::ffff:a9fe:a9fe]/metadata/v1/',
+      'http://[0:0:0:0:0:ffff:a9fe:a9fe]/metadata/v1/',
+      'http://[0:0:0:0:0:ffff:169.254.169.254]/metadata/v1/',
       'http://kikobeats.com',
       "https://en.wikipedia.org/wiki/Amdahl's_law",
       'https://kikobeats.com',
@@ -16,7 +20,7 @@ const test = require('ava')
       'http://www.kikobeats.com'
     ].forEach(input => {
       const url = httpUrl(input)
-      t.is(typeof url, 'string')
+      t.is(typeof url, 'string', `'${input}' is not true`)
       t.true(!!url)
     })
   })
