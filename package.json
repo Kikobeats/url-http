@@ -30,7 +30,7 @@
     "whatwg"
   ],
   "dependencies": {
-    "re2": "~1.18.0",
+    "re2": "~1.19.0",
     "url-regex-safe": "~3.0.0"
   },
   "devDependencies": {
