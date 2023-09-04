@@ -3,8 +3,9 @@
   "description": "Get input as normalized WHATWG URL",
   "homepage": "https://nicedoc.io/kikobeats/url-http",
   "version": "1.1.0",
-  "browser": "lightweight.js",
+  "types": "src/index.d.ts",
   "main": "index.js",
+  "browser": "lightweight.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
@@ -94,6 +95,5 @@
   "simple-git-hooks": {
     "commit-msg": "npx commitlint --edit",
     "pre-commit": "npx nano-staged"
-  },
-  "types": "src/index.d.ts"
+  }
 }
