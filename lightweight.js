@@ -1,7 +1,5 @@
 'use strict'
 
-const URL = globalThis ? globalThis.URL : require('url').URL
-
 const REGEX_HTTP_PROTOCOL = /^https?:\/\//i
 
 module.exports = url => {
