@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2024-02-14)
+
+
+### Features
+
+* handle punycode URLs ([#13](https://github.com/Kikobeats/url-http/issues/13)) ([b0bde42](https://github.com/Kikobeats/url-http/commit/b0bde42b10ec32e68a6d8ce8ad54aa4507d246bf))
+
 ### 1.1.3 (2023-10-24)
 
 ### 1.1.2 (2023-09-07)
