@@ -17,7 +17,10 @@ const test = require('ava')
       'https://kikobeats.com',
       'https://www.kikobeats.com',
       'https://en.wikipedia.org/wiki/Saw_(disambiguation)',
-      'http://www.kikobeats.com'
+      'http://www.kikobeats.com',
+      'https://example.xn--p1ai',
+      'https://xn--80a0aaa.com',
+      'https://xn--80a0aaa.xn--p1ai'
     ].forEach(input => {
       const url = httpUrl(input)
       t.is(typeof url, 'string', `'${input}' is not true`)
@@ -42,6 +45,7 @@ const test = require('ava')
     ;(isLightweight
       ? urls
       : urls.concat([
+        'http://Http://xn--80a0aaa.xn--p1ai',
         'http://Http://kikobeats.com',
         'https://admin:admin@test-http-login.vercel.app',
         'http:!!!\0',
