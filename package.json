@@ -1,14 +1,10 @@
 {
   "name": "url-http",
   "description": "Get input as normalized WHATWG URL",
-  "homepage": "https://nicedoc.io/kikobeats/url-http",
+  "homepage": "https://github.com/kikobeats/url-http",
   "version": "1.1.3",
   "types": "src/index.d.ts",
   "browser": "lightweight.js",
-  "exports": {
-    ".": "./index.js",
-    "./lightweight": "./lightweight.js"
-  },
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
@@ -44,9 +40,9 @@
     "ava": "latest",
     "c8": "latest",
     "ci-publish": "latest",
-    "conventional-github-releaser": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
+    "github-generate-release": "latest",
     "nano-staged": "latest",
     "npm-check-updates": "latest",
     "simple-git-hooks": "latest",
@@ -71,7 +67,7 @@
     "prerelease": "npm run update:check",
     "pretest": "npm run lint",
     "release": "standard-version -a",
-    "release:github": "conventional-github-releaser -p angular",
+    "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "test": "c8 ava",
     "update": "ncu -u",
@@ -83,8 +79,12 @@
       "@commitlint/config-conventional"
     ]
   },
+  "exports": {
+    ".": "./index.js",
+    "./lightweight": "./lightweight.js"
+  },
   "nano-staged": {
-    "*.js,!*.min.js,": [
+    "*.js": [
       "prettier-standard",
       "standard --fix"
     ],
