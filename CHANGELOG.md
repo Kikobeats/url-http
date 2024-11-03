@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.3.0 (2024-11-03)
+
+
+### Features
+
+* add text fragment support ([#16](https://github.com/Kikobeats/url-http/issues/16)) ([d56356a](https://github.com/Kikobeats/url-http/commit/d56356a9ade2b039ff4177a9b1a5dfcb6983da6b))
+
 ### 1.2.3 (2024-10-30)
 
 ### 1.2.2 (2024-06-03)
