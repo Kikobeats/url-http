@@ -8,6 +8,9 @@ const test = require('ava')
 ].forEach(({ fn: httpUrl, isLightweight }) => {
   test(isLightweight ? 'lightweight » true' : 'true', t => {
     ;[
+      'https://example.com/#:~:text=Example%20Domain,-This%20domain%20is',
+      'https://lotus-center.vercel.app/#how-often-should-i-service-my-lotus',
+      'https://example.com/audio.mp3#t=45',
       'http://169.254.169.254:1337/',
       'http://[::ffff:a9fe:a9fe]/metadata/v1/',
       'http://[0:0:0:0:0:ffff:a9fe:a9fe]/metadata/v1/',
