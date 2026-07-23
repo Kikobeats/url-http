@@ -51,6 +51,13 @@ const test = require('ava').default
         'http://Http://xn--80a0aaa.xn--p1ai',
         'http://Http://kikobeats.com',
         'https://admin:admin@test-http-login.vercel.app',
+        // credentialed URLs must stay rejected even when exact-match is
+        // disabled for text fragments, punycode hosts, or IPv6
+        'https://trusted.example@example.com/#:~:text=x',
+        'https://user:pass@example.com/#:~:text=Example',
+        'https://trusted.example@xn--80a0aaa.com/',
+        'http://trusted.example@[::1]/',
+        'http://user:pass@[::1]/',
         'http:!!!\0',
         'http://-kikobeats.com'
       ])
