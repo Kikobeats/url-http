@@ -56,7 +56,12 @@ const test = require('ava').default
         'https://trusted.example@xn--80a0aaa.com/',
         'http://user:pass@[::1]/',
         'http:!!!\0',
-        'http://-kikobeats.com'
+        'http://-kikobeats.com',
+        // unanchored matching must not accept an invalid authority just
+        // because a valid URL appears later in the path / text fragment
+        'http://internal/https://example.com/#:~:text=x',
+        'http://metadata/https://example.com/#:~:text=x',
+        'http://xn--internal/https://example.com/'
       ])
     ).forEach(input => {
       const url = httpUrl(input)
