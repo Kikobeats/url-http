@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.18 (2026-08-05)
+
+
+### Bug Fixes
+
+* validate the authority instead of the whole href ([#34](https://github.com/Kikobeats/url-http/issues/34)) ([ac55047](https://github.com/Kikobeats/url-http/commit/ac55047e643a4ab469c05b237b349901096595ce)), closes [#32](https://github.com/Kikobeats/url-http/issues/32)
+
 ### 1.3.17 (2026-08-05)
 
 ### 1.3.16 (2026-08-05)
