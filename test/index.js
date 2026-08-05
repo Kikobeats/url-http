@@ -51,6 +51,10 @@ const test = require('ava').default
         'http://Http://xn--80a0aaa.xn--p1ai',
         'http://Http://kikobeats.com',
         'https://admin:admin@test-http-login.vercel.app',
+        'https://trusted.example@example.com/#:~:text=x',
+        'https://user:pass@example.com/#:~:text=Example',
+        'https://trusted.example@xn--80a0aaa.com/',
+        'http://user:pass@[::1]/',
         'http:!!!\0',
         'http://-kikobeats.com'
       ])

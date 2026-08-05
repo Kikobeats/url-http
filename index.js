@@ -7,8 +7,8 @@ const REGEX_HTTP_PROTOCOL = /^https?:\/\//i
 
 module.exports = url => {
   try {
-    const { href, hostname, hash } = new URL(url)
-    if (!REGEX_HTTP_PROTOCOL.test(href)) return false
+    const { href, hostname, hash, username, password } = new URL(url)
+    if (!REGEX_HTTP_PROTOCOL.test(href) || username || password) return false
     const isIPv6 = hostname.startsWith('[') && hostname.endsWith(']')
     const isPunycode = punycodeRegex.test(hostname)
     const hasTextFragment = hash.startsWith('#:~:text=')
