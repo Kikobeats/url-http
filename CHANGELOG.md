@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.14 (2026-08-05)
+
+
+### Bug Fixes
+
+* reject credentialed URLs for IPv6, punycode, and text fragments ([#30](https://github.com/Kikobeats/url-http/issues/30)) ([434bc1f](https://github.com/Kikobeats/url-http/commit/434bc1f446008df2d2facf39553bfe1c79ea26d8))
+
 ### 1.3.13 (2026-08-03)
 
 ### 1.3.12 (2026-07-30)
