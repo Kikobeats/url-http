@@ -73,3 +73,11 @@ const test = require('ava').default
     })
   })
 })
+
+test('IDN TLD regexes survive cache eviction', t => {
+  const httpUrl = require('..')
+  t.is(httpUrl('https://xn--80a0aaa.xn--p1ai'), 'https://xn--80a0aaa.xn--p1ai/')
+  for (let i = 0; i < 300; i++) httpUrl(`https://example.xn--junk${i}`)
+  t.is(httpUrl('https://xn--80a0aaa.xn--p1ai'), 'https://xn--80a0aaa.xn--p1ai/')
+  t.is(httpUrl('https://xn--80a0aaa.invalidtld/'), false)
+})
