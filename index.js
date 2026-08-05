@@ -1,61 +1,35 @@
 'use strict'
 
-const urlRegex = require('url-regex-safe')
+const tlds = require('tlds')
+const { domainToASCII } = require('node:url')
 
-const REGEX_URL_EXACT = urlRegex({
-  apostrophes: true,
-  exact: true,
-  parens: true
-})
-const REGEX_URL_LOOSE = urlRegex({
-  apostrophes: true,
-  exact: false,
-  parens: true
-})
+// The list stores IDN TLDs in Unicode (`рф`) but a WHATWG hostname is always
+// punycoded, so the comparison has to happen in ASCII.
+const PUBLIC_TLDS = new Set(tlds.map(tld => domainToASCII(tld)))
 
-// IANA's root zone lists ~151 xn-- TLDs; the bound keeps a caller-supplied one
-// from growing the cache without limit.
-const MAX_CACHED_IDN_TLDS = 256
-const idnRegexCache = new Map()
+const REGEX_IPV4_TLD = /^\d+$/
+const REGEX_LABELS =
+  /^[a-z\d](?:[a-z\d_-]*[a-z\d])?(?:\.[a-z\d](?:[a-z\d_-]*[a-z\d])?)*$/
 
-const idnRegex = tld => {
-  const cached = idnRegexCache.get(tld)
-  if (cached !== undefined) return cached
-  const regex = urlRegex({
-    apostrophes: true,
-    exact: true,
-    parens: true,
-    tlds: [tld]
-  })
-  if (idnRegexCache.size >= MAX_CACHED_IDN_TLDS) {
-    idnRegexCache.delete(idnRegexCache.keys().next().value)
-  }
-  idnRegexCache.set(tld, regex)
-  return regex
+const isPublicHostname = hostname => {
+  // The parser has already validated the IPv6 literal inside the brackets.
+  if (hostname[0] === '[') return true
+  if (hostname === 'localhost') return true
+
+  const tldIndex = hostname.lastIndexOf('.') + 1
+  const tld = hostname.slice(tldIndex)
+
+  // A numeric last label means the parser resolved the whole host as IPv4.
+  if (REGEX_IPV4_TLD.test(tld)) return true
+
+  return tldIndex > 0 && PUBLIC_TLDS.has(tld) && REGEX_LABELS.test(hostname)
 }
 
 module.exports = url => {
   try {
-    const parsedUrl = new URL(url)
-    const { href, hostname, protocol, username, password } = parsedUrl
+    const { href, hostname, protocol, username, password } = new URL(url)
     if ((protocol !== 'http:' && protocol !== 'https:') || username || password) { return false }
-
-    // url-regex-safe cannot exact-match IPv6 authorities.
-    if (hostname[0] === '[') {
-      // Matching the whole href would succeed on a URL-looking substring in the
-      // path, leaving the authority unchecked (`http://internal/https://example.com/`).
-      REGEX_URL_LOOSE.lastIndex = 0
-      return REGEX_URL_LOOSE.test(`${parsedUrl.origin}/`) && href
-    }
-
-    // url-regex-safe's TLD list has no xn-- entries, so an IDN TLD has to be
-    // supplied; an ASCII one stays subject to the built-in public-suffix list.
-    const tldIndex = hostname.lastIndexOf('.') + 1
-    const regex = hostname.startsWith('xn--', tldIndex)
-      ? idnRegex(hostname.slice(tldIndex))
-      : REGEX_URL_EXACT
-
-    return regex.test(href) && href
+    return isPublicHostname(hostname) && href
   } catch {
     return false
   }

@@ -23,7 +23,9 @@ const urlHttp = require('url-http')
 !!urlHttp('callto:192.168.103.77+type=ip') // ==> false
 ```
 
-If you need to run the package in a browser environment, you can save some bytes using the lightweight version:
+Beyond the scheme, it requires the host to be one the public internet can resolve: an IP literal, `localhost`, or a domain whose TLD is in the [public suffix list](https://github.com/stephenmathieson/node-tlds). Hosts such as `http://internal/` or `https://example.local/` are rejected, as are URLs carrying credentials.
+
+If you need to run the package in a browser environment, you can save some bytes using the lightweight version, which checks the scheme only:
 
 ```js
 const urlHttp = require('url-http/lightweight')

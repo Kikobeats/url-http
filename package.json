@@ -40,8 +40,7 @@
     "whatwg"
   ],
   "dependencies": {
-    "re2": "~1.26.0",
-    "url-regex-safe": "~4.0.0"
+    "tlds": "~1.261.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
