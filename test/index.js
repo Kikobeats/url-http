@@ -23,7 +23,13 @@ const test = require('ava').default
       'http://www.kikobeats.com',
       'https://example.xn--p1ai',
       'https://xn--80a0aaa.com',
-      'https://xn--80a0aaa.xn--p1ai'
+      'https://xn--80a0aaa.xn--p1ai',
+      'http://localhost:3000/',
+      'http://0.0.0.0:1/',
+      'https://sub.dom_ain.example.com/',
+      'https://example.com/a.',
+      'https://example.com/?q=1.',
+      'https://example.com/#x!'
     ].forEach(input => {
       const url = httpUrl(input)
       t.is(typeof url, 'string', `'${input}' is not true`)
@@ -64,7 +70,12 @@ const test = require('ava').default
         'https://xn--e1afmkfd.local/',
         'https://пример.local/',
         'https://xn--80a0aaa.internal/',
-        'https://xn--80a0aaa.invalidtld/'
+        'https://xn--80a0aaa.invalidtld/',
+        'https://xn--80a0aaa.xn--totallyfaketld/',
+        'https://xn--80a0aaa.ñ/',
+        'https://kikobeats.com./',
+        'https://a-.com/',
+        'https://_dmarc.example.com/'
       ])
     ).forEach(input => {
       const url = httpUrl(input)
@@ -74,10 +85,9 @@ const test = require('ava').default
   })
 })
 
-test('IDN TLD regexes survive cache eviction', t => {
+test('an IDN TLD is matched by its punycode form', t => {
   const httpUrl = require('..')
-  t.is(httpUrl('https://xn--80a0aaa.xn--p1ai'), 'https://xn--80a0aaa.xn--p1ai/')
-  for (let i = 0; i < 300; i++) httpUrl(`https://example.xn--junk${i}`)
-  t.is(httpUrl('https://xn--80a0aaa.xn--p1ai'), 'https://xn--80a0aaa.xn--p1ai/')
-  t.is(httpUrl('https://xn--80a0aaa.invalidtld/'), false)
+  t.is(httpUrl('https://example.рф'), 'https://example.xn--p1ai/')
+  t.is(httpUrl('https://example.xn--p1ai'), 'https://example.xn--p1ai/')
+  t.is(httpUrl('https://example.xn--p1a'), false)
 })
