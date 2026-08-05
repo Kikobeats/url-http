@@ -57,8 +57,6 @@ const test = require('ava').default
         'http://user:pass@[::1]/',
         'http:!!!\0',
         'http://-kikobeats.com',
-        // unanchored matching must not accept an invalid authority just
-        // because a valid URL appears later in the path / text fragment
         'http://internal/https://example.com/#:~:text=x',
         'http://metadata/https://example.com/#:~:text=x',
         'http://xn--internal/https://example.com/'

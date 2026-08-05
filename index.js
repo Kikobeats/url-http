@@ -7,28 +7,22 @@ const REGEX_HTTP_PROTOCOL = /^https?:\/\//i
 
 module.exports = url => {
   try {
-    const parsed = new URL(url)
-    const { href, hostname, username, password } = parsed
+    const { href, hostname, origin, username, password } = new URL(url)
     if (!REGEX_HTTP_PROTOCOL.test(href) || username || password) return false
     const isIPv6 = hostname.startsWith('[') && hostname.endsWith(']')
     const isPunycode = punycodeRegex.test(hostname)
-    // Text fragments match with exact:true. Only IPv6 / punycode need
-    // unanchored matching (url-regex-safe does not exact-match those forms).
+    // url-regex-safe cannot exact-match IPv6 or punycode authorities.
     const exact = !isIPv6 && !isPunycode
 
     const tlds = isPunycode ? [] : undefined
-    const options = { apostrophes: true, exact, parens: true, tlds }
-    if (!urlRegex(options).test(href)) return false
+    const regex = urlRegex({ apostrophes: true, exact, parens: true, tlds })
+    if (!regex.test(href)) return false
 
-    // Unanchored matching can succeed on a URL-looking path substring while
-    // the authority itself is not a valid HTTP URL (e.g. single-label host
-    // `http://internal/https://example.com/`). Require the origin to match too.
-    if (!exact) {
-      const authorityHref = `${parsed.origin}/`
-      if (!urlRegex({ ...options, exact: false }).test(authorityHref)) {
-        return false
-      }
-    }
+    regex.lastIndex = 0
+
+    // Unanchored matching also succeeds on a URL-looking substring in the path,
+    // leaving the authority unchecked (`http://internal/https://example.com/`).
+    if (!exact && !regex.test(`${origin}/`)) return false
 
     return href
   } catch (_) {
