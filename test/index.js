@@ -59,7 +59,12 @@ const test = require('ava').default
         'http://-kikobeats.com',
         'http://internal/https://example.com/#:~:text=x',
         'http://metadata/https://example.com/#:~:text=x',
-        'http://xn--internal/https://example.com/'
+        'http://xn--internal/https://example.com/',
+        'https://example.local/',
+        'https://xn--e1afmkfd.local/',
+        'https://пример.local/',
+        'https://xn--80a0aaa.internal/',
+        'https://xn--80a0aaa.invalidtld/'
       ])
     ).forEach(input => {
       const url = httpUrl(input)

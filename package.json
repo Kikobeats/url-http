@@ -40,7 +40,6 @@
     "whatwg"
   ],
   "dependencies": {
-    "punycode-regex": "~1.0.1",
     "re2": "~1.26.0",
     "url-regex-safe": "~4.0.0"
   },
