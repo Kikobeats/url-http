@@ -56,7 +56,10 @@ const test = require('ava').default
         'https://trusted.example@xn--80a0aaa.com/',
         'http://user:pass@[::1]/',
         'http:!!!\0',
-        'http://-kikobeats.com'
+        'http://-kikobeats.com',
+        'http://internal/https://example.com/#:~:text=x',
+        'http://metadata/https://example.com/#:~:text=x',
+        'http://xn--internal/https://example.com/'
       ])
     ).forEach(input => {
       const url = httpUrl(input)
