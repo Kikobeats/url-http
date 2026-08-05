@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.16 (2026-08-05)
+
+
+### Bug Fixes
+
+* reject punycode hosts with non-public ASCII TLDs ([#32](https://github.com/Kikobeats/url-http/issues/32)) ([af64b2f](https://github.com/Kikobeats/url-http/commit/af64b2ffadaa33d1a4c70292d0526e678e2e984b))
+
 ### 1.3.15 (2026-08-05)
 
 
