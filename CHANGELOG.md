@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.15 (2026-08-05)
+
+
+### Bug Fixes
+
+* reject invalid hosts matched via path substrings ([#31](https://github.com/Kikobeats/url-http/issues/31)) ([5162219](https://github.com/Kikobeats/url-http/commit/51622195b102be6e72d10857940827171b0607bc))
+
 ### 1.3.14 (2026-08-05)
 
 
