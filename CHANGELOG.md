@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.19 (2026-10-29)
+
+
+### Bug Fixes
+
+* **types:** describe the CommonJS export with export = ([#36](https://github.com/Kikobeats/url-http/issues/36)) ([32021dd](https://github.com/Kikobeats/url-http/commit/32021ddc380b66f5a30894f96fdff03d5da6abfb))
+
 ### 1.3.18 (2026-08-05)
 
 
